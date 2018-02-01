@@ -83,6 +83,13 @@ class Passport
     public static $runsMigrations = true;
 
     /**
+     * The database connection used for models
+     *
+     * @var string
+     */
+    public static $databaseConnection;
+
+    /**
      * Enable the implicit grant type.
      *
      * @return static
@@ -329,6 +336,18 @@ class Passport
     public static function ignoreMigrations()
     {
         static::$runsMigrations = false;
+
+        return new static;
+    }
+
+    /**
+     * Configure the database connection to be used
+     *
+     * @return static
+     */
+    public static function setDatabaseConnection($databaseConnection)
+    {
+        static::$databaseConnection = $databaseConnection;
 
         return new static;
     }
